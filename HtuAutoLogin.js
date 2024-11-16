@@ -1,13 +1,13 @@
 // ==UserScript==
-// @name        HTU校园网自动登录
-// @namespace   
+// @name        河南师范大学（HTU）校园网自动登录
+// @namespace   https://github.com/wlunan/HtuAutoLogin
 // @match       http://10.101.2.194:6060/*
 // @version     1.0
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @grant       GM_deleteValue
-// @author      -
-// @description 2024/11/16 09:54:53
+// @author      lunan
+// @description 河南师范大学校园网自动登录，适用于公共区域的学生登录界面
 // ==/UserScript==
 
 $(document).ready(function() {
@@ -18,11 +18,12 @@ $(document).ready(function() {
     var formHtml = `
     <div id="loginForm" style="position: fixed; top: 20%; left: 20%; transform: translateX(-50%); background: white; padding: 20px; border: 1px solid #ccc; z-index: 9999; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
         <h3>请输入您的账号和密码</h3><br>
-        <h3>（第一次运行需要输入你的校园网账户和密码）</h3>
+        <h3>第一次运行需要输入你的校园网账户和密码</h3>
+        <h3>提交后1.5秒后自动登录提交</h3><br>
         <label for="usernameInput">账号:</label>
-        <input type="text" id="usernameInput" value="" autocomplete="off"><br><br>
+        <input type="text" id="usernameInput" value="" autocomplete="no"><br><br>
         <label for="passwordInput">密码:</label>
-        <input type="password" id="passwordInput" value="" autocomplete="off"><br><br>
+        <input type="password" id="passwordInput" value="" autocomplete="no"><br><br>
         <button id="saveCredentials">保存并提交</button>
         <button id="stop">停止自动运行（更新账户密码用）</button>
     </div>
@@ -78,6 +79,6 @@ function loginCampusNetwork(username, password) {
 
             // 如果需要手动触发表单提交，可以使用下面的代码
             // $('#loginForm').submit();
-        }, 2500);  // 设置等待时间
+        }, 1500);  // 设置等待时间
     }
 }
